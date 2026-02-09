@@ -1,8 +1,6 @@
-import { Box } from "@mui/material";
-import { DataGrid} from "@mui/x-data-grid";
 import { tokens } from "../../Theme";
+import ListComponent from "../../components/ListComponent";
 import { mockDataContacts } from "../../data/mockData";
-import Header from "../../components/Header";
 import { useTheme } from "@mui/material";
 
 const Contacts = () => {
@@ -53,52 +51,15 @@ const Contacts = () => {
   ];
 
   return (
-    <Box m="20px">
-      <Header
-        title="CONTACTS"
-        subtitle="List of Contacts for Future Reference"
-      />
-      <Box
-        m="40px 0 0 0"
-        height="75vh"
-        width='99%'
-        sx={{
-          "& .MuiDataGrid-root": {
-            border: "none",
-          },
-          "& .MuiDataGrid-cell": {
-            borderBottom: "none",
-          },
-          "& .name-column--cell": {
-            color: colors.greenAccent[300],
-          },
-          "& .MuiDataGrid-columnHeader, .MuiDataGrid-scrollbarFiller, .MuiDataGrid-columnSeparator": {
-            backgroundColor: `${colors.blueAccent[700]} !important `,
-            borderBottom: "none",
-          },
-          "& .MuiDataGrid-virtualScroller": {
-            backgroundColor: colors.primary[400],
-          },
-          "& .MuiDataGrid-footerContainer": {
-            borderTop: "none",
-            backgroundColor: colors.blueAccent[700],
-          },
-          "& .MuiCheckbox-root": {
-            color: `${colors.greenAccent[200]} !important`,
-          },
-          "& .MuiDataGrid-toolbar":{
-            background: `${colors.primary[400]} !important`,
-            borderBottom: 'none'
-          }
-        }}
-      >
-        <DataGrid
-          rows={mockDataContacts}
-          columns={columns}
-          showToolbar 
-        />
-      </Box>
-    </Box>
+    <ListComponent
+      title={"CONTACTS"}
+      subtitle={"List of Contacts for Future Reference"}
+      rows={mockDataContacts}
+      columns={columns}
+      colors={colors}
+      isShowToolBar={true}
+      isCheckedBox={false}
+    />
   );
 };
 

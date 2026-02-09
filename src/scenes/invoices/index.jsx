@@ -1,8 +1,9 @@
-import { Box, Typography, useTheme } from "@mui/material";
-import { DataGrid } from "@mui/x-data-grid";
+import { Typography, useTheme } from "@mui/material";
+
 import { tokens } from "../../Theme";
 import { mockDataInvoices } from "../../data/mockData";
-import Header from "../../components/Header";
+
+import ListComponent from "../../components/ListComponent";
 
 const Invoices = () => {
   const theme = useTheme();
@@ -30,7 +31,7 @@ const Invoices = () => {
       headerName: "Cost",
       flex: 1,
       renderCell: (params) => (
-        <Typography sx={{ mt:'15px'}} color={colors.greenAccent[500]}>
+        <Typography sx={{ mt: "15px" }} color={colors.greenAccent[500]}>
           ${params.row.cost}
         </Typography>
       ),
@@ -43,41 +44,7 @@ const Invoices = () => {
   ];
 
   return (
-    <Box m="20px">
-      <Header title="INVOICES" subtitle="List of Invoice Balances" />
-      <Box
-        m="40px 0 0 0"
-        height="75vh"
-        width='99%'
-        sx={{
-          "& .MuiDataGrid-root": {
-            border: "none",
-          },
-          "& .MuiDataGrid-cell": {
-            borderBottom: "none",
-          },
-          "& .name-column--cell": {
-            color: colors.greenAccent[300],
-          },
-          "& .MuiDataGrid-columnHeader, .MuiDataGrid-scrollbarFiller, .MuiDataGrid-columnSeparator": {
-            backgroundColor: `${colors.blueAccent[700]} !important`,
-            borderBottom: "none",
-          },
-          "& .MuiDataGrid-virtualScroller": {
-            backgroundColor: colors.primary[400],
-          },
-          "& .MuiDataGrid-footerContainer": {
-            borderTop: "none",
-            backgroundColor: colors.blueAccent[700],
-          },
-          "& .MuiCheckbox-root": {
-            color: `${colors.greenAccent[200]} !important`,
-          },
-        }}
-      >
-        <DataGrid checkboxSelection rows={mockDataInvoices} columns={columns} />
-      </Box>
-    </Box>
+    <ListComponent title={"INVOICE"} subtitle={"List of Invoice Balance"} rows={mockDataInvoices} columns={columns} colors={colors} />
   );
 };
 

@@ -161,7 +161,7 @@ const Dashboard = () => {
               </IconButton>
             </Box>
           </Box>
-          <Box height="250px" m="-20px 0 0 0">
+          <Box height="250px" >
             <LineChart isDashboard={true} />
           </Box>
         </Box>
@@ -255,7 +255,7 @@ const Dashboard = () => {
           >
             Sales Quantity
           </Typography>
-          <Box height="250px" mt="-20px">
+          <Box height="250px" >
             <BarChart isDashboard={true} />
           </Box>
         </Box>
