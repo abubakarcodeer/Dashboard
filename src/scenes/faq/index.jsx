@@ -1,6 +1,6 @@
-import { Box} from "@mui/material";
+import { BoxC} from "@mui/material";
 import Header from "../../components/Header";
-import AccordionComponent from "../../components/Accordion";
+import AccordionComponent from "../../components/AccordionComponent";
 
 const faqs = [" An Important Question","Another Important Question","Your Favorite Question","Some Random Question","The Final Question"]
 
