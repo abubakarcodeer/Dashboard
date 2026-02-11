@@ -1,9 +1,9 @@
 import { Typography, useTheme } from "@mui/material";
-
 import { tokens } from "../../Theme";
 import { mockDataInvoices } from "../../data/mockData";
+import { Suspense, lazy } from "react";
 
-import ListComponent from "../../components/ListComponent";
+const ListComponent = lazy(() => import("../../components/ListComponent"));
 
 const Invoices = () => {
   const theme = useTheme();
@@ -44,7 +44,9 @@ const Invoices = () => {
   ];
 
   return (
-    <ListComponent title={"INVOICE"} subtitle={"List of Invoice Balance"} rows={mockDataInvoices} columns={columns} colors={colors} />
+   <Suspense fallback={<div>Loading...</div>}>
+ <ListComponent title={"INVOICE"} subtitle={"List of Invoice Balance"} rows={mockDataInvoices} columns={columns} colors={colors} />
+   </Suspense>
   );
 };
 

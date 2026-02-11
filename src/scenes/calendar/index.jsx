@@ -1,5 +1,4 @@
-import { useState } from "react";
-import FullCalendar from "@fullcalendar/react";
+import { lazy, Suspense, useState } from "react";
 import { formatDate } from "@fullcalendar/core";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import timeGridPlugin from "@fullcalendar/timegrid";
@@ -15,6 +14,8 @@ import {
 } from "@mui/material";
 import Header from "../../components/Header";
 import { tokens } from "../../Theme";
+
+const FullCalendar = lazy(()=>import ("@fullcalendar/react"))
 
 const Calendar = () => {
   const theme = useTheme();
@@ -101,7 +102,8 @@ const Calendar = () => {
             },
           }}
         >
-          <FullCalendar
+          <Suspense fallback={<div>Loading...</div>}>
+            <FullCalendar
             height="75vh"
             plugins={[
               dayGridPlugin,
@@ -135,6 +137,7 @@ const Calendar = () => {
               },
             ]}
           />
+          </Suspense>
         </Box>
       </Box>
     </Box>

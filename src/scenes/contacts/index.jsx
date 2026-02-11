@@ -1,7 +1,9 @@
 import { tokens } from "../../Theme";
-import ListComponent from "../../components/ListComponent";
 import { mockDataContacts } from "../../data/mockData";
 import { useTheme } from "@mui/material";
+import { lazy,Suspense } from "react";
+
+const ListComponent = lazy(() => import("../../components/ListComponent"));
 
 const Contacts = () => {
   const theme = useTheme();
@@ -51,7 +53,8 @@ const Contacts = () => {
   ];
 
   return (
-    <ListComponent
+    <Suspense fallback={<div>Loading...</div>}>
+      <ListComponent
       title={"CONTACTS"}
       subtitle={"List of Contacts for Future Reference"}
       rows={mockDataContacts}
@@ -60,6 +63,7 @@ const Contacts = () => {
       isShowToolBar={true}
       isCheckedBox={false}
     />
+    </Suspense>
   );
 };
 

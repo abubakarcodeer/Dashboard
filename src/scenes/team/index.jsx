@@ -4,7 +4,9 @@ import { mockDataTeam } from "../../data/mockData";
 import AdminPanelSettingsOutlinedIcon from "@mui/icons-material/AdminPanelSettingsOutlined";
 import LockOpenOutlinedIcon from "@mui/icons-material/LockOpenOutlined";
 import SecurityOutlinedIcon from "@mui/icons-material/SecurityOutlined";
-import ListComponent from "../../components/ListComponent";
+import { lazy, Suspense } from "react";
+
+const ListComponent = lazy(() => import("../../components/ListComponent"));
 
 const Team = () => {
   const theme = useTheme();
@@ -68,13 +70,15 @@ const Team = () => {
   ];
 
   return (
-    <ListComponent
+  <Suspense fallback={<div>Loading...</div>}>
+     <ListComponent
       title={"TEAM"}
       subtitle={"Managing the Team Members"}
       rows={mockDataTeam}
       columns={columns}
       colors={colors}
     />
+  </Suspense>
   );
 };
 
