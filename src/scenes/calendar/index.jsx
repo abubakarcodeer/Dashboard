@@ -10,6 +10,7 @@ import {
   ListItem,
   ListItemText,
   Typography,
+  useMediaQuery,
   useTheme,
 } from "@mui/material";
 import Header from "../../components/Header";
@@ -21,6 +22,7 @@ const Calendar = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
   const [currentEvents, setCurrentEvents] = useState([]);
+  const isMobile = useMediaQuery("(max-width:599px)");
 
   const handleDateClick = (selected) => {
     const title = prompt("Please enter a new title for your event");
@@ -52,7 +54,7 @@ const Calendar = () => {
     <Box m="20px">
       <Header title="Calendar" subtitle="Full Calendar Interactive Page" />
 
-      <Box display="flex" justifyContent="space-between">
+      <Box display={isMobile?"inline":"flex"}  justifyContent="space-between">
         {/* CALENDAR SIDEBAR */}
         <Box
           flex="1 1 20%"
@@ -91,7 +93,8 @@ const Calendar = () => {
         {/* CALENDAR */}
         <Box
           flex="1 1 100%"
-          ml="15px"
+          ml={isMobile?"0px":"15px"}
+          mt={isMobile?"10px":"0px"}
           sx={{
             "& .fc-list-day-cushion": {
               backgroundColor: `${colors.blueAccent[600]} !important`,

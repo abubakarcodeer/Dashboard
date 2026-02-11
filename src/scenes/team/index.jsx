@@ -1,4 +1,4 @@
-import { Box, Typography, useTheme } from "@mui/material";
+import { Box, Typography, useMediaQuery, useTheme } from "@mui/material";
 import { tokens } from "../../Theme";
 import { mockDataTeam } from "../../data/mockData";
 import AdminPanelSettingsOutlinedIcon from "@mui/icons-material/AdminPanelSettingsOutlined";
@@ -11,6 +11,7 @@ const ListComponent = lazy(() => import("../../components/ListComponent"));
 const Team = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
+  const isMobile = useMediaQuery("(max-width:559px)");
   const columns = [
     { field: "id", headerName: "ID" },
     {
@@ -43,7 +44,7 @@ const Team = () => {
       renderCell: ({ row: { access } }) => {
         return (
           <Box
-            width="60%"
+            width={isMobile?"85%":"60%"}
             m="10px auto"
             p="5px"
             display="flex"
@@ -68,17 +69,20 @@ const Team = () => {
       },
     },
   ];
+  const mobileColumns = columns.filter((col) =>
+    ["id", "name", "accessLevel"].includes(col.field),
+  );
 
   return (
-  <Suspense fallback={<div>Loading...</div>}>
-     <ListComponent
-      title={"TEAM"}
-      subtitle={"Managing the Team Members"}
-      rows={mockDataTeam}
-      columns={columns}
-      colors={colors}
-    />
-  </Suspense>
+    <Suspense fallback={<div>Loading...</div>}>
+      <ListComponent
+        title={"TEAM"}
+        subtitle={"Managing the Team Members"}
+        rows={mockDataTeam}
+        columns={isMobile ? mobileColumns : columns}
+        colors={colors}
+      />
+    </Suspense>
   );
 };
 

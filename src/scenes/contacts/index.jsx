@@ -1,13 +1,14 @@
 import { tokens } from "../../Theme";
 import { mockDataContacts } from "../../data/mockData";
-import { useTheme } from "@mui/material";
-import { lazy,Suspense } from "react";
+import { useMediaQuery, useTheme } from "@mui/material";
+import { lazy, Suspense } from "react";
 
 const ListComponent = lazy(() => import("../../components/ListComponent"));
 
 const Contacts = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
+  const isMobile = useMediaQuery("(max-width:559px)");
 
   const columns = [
     { field: "id", headerName: "ID", flex: 0.5 },
@@ -51,18 +52,21 @@ const Contacts = () => {
       flex: 1,
     },
   ];
+  const mobileColumns = columns.filter((col) =>
+    ["id", "name", "phone"].includes(col.field),
+  );
 
   return (
     <Suspense fallback={<div>Loading...</div>}>
       <ListComponent
-      title={"CONTACTS"}
-      subtitle={"List of Contacts for Future Reference"}
-      rows={mockDataContacts}
-      columns={columns}
-      colors={colors}
-      isShowToolBar={true}
-      isCheckedBox={false}
-    />
+        title={"CONTACTS"}
+        subtitle={"List of Contacts for Future Reference"}
+        rows={mockDataContacts}
+        columns={isMobile ? mobileColumns : columns}
+        colors={colors}
+        isShowToolBar={true}
+        isCheckedBox={false}
+      />
     </Suspense>
   );
 };

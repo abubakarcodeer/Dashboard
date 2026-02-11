@@ -6,6 +6,7 @@ import { mockPieData as data } from "../data/mockData";
 const PieChart = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
+
   return (
     <ResponsivePie
       data={data}
@@ -85,7 +86,7 @@ const PieChart = () => {
           translateX: 0,
           translateY: 56,
           itemsSpacing: 0,
-          itemWidth: 100,
+          itemWidth: 60,
           itemHeight: 18,
           itemTextColor: "#999",
           itemDirection: "left-to-right",

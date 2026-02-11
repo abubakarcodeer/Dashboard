@@ -1,13 +1,22 @@
 @import url("https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&display=swap");
 
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 html,
 body,
 #root,
 .app,
 .content {
-  /* height: 100%; */
   width: 100%;
   font-family: "Source Sans 3", sans-serif;
+}
+.content{
+  height: 100vh;
+   overflow-x: hidden;
 }
 .app {
   display: flex;
