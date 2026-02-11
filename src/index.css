@@ -15,8 +15,13 @@ body,
   font-family: "Source Sans 3", sans-serif;
 }
 .content{
-  height: 100vh;
+  height: 100%;
    overflow-x: hidden;
+}
+@media (max-width:599px) {
+  .content{
+    height: 100vh;
+  }
 }
 .app {
   display: flex;
