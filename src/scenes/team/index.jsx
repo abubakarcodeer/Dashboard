@@ -70,7 +70,7 @@ const Team = () => {
     },
   ];
   const mobileColumns = columns.filter((col) =>
-    ["id", "name", "accessLevel"].includes(col.field),
+    ["id", "name", "age"].includes(col.field),
   );
 
   return (

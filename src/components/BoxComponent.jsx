@@ -20,8 +20,9 @@ const BoxComponent = ({ title, subtitle, progress, increase, Icon }) => {
         subtitle={subtitle}
         progress={progress}
         increase={increase}
+        isMobile={isMobile}
         icon={
-          <Icon sx={{ color: colors.greenAccent[600], fontSize: "26px" }} />
+          <Icon sx={{ color: colors.greenAccent[600], fontSize: "26px", }} />
         }
       />
     </Box>
