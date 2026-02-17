@@ -1,16 +1,23 @@
-# React + Vite
+# React MUI Dashboard
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, responsive **admin dashboard** built with **React** and **Material-UI (MUI)**. This dashboard is fully customizable and integrates powerful tools for building web applications with forms, charts, maps, and real-time data visualization.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Material-UI (MUI)**: Clean and customizable components, including Grid layouts, Toolbar, and theming support.
+- **Charts with Nivo**: Beautiful, interactive charts for analytics and data visualization.
+- **Maps with Nivo Geo**: Visualize geographic data using **mock GeoJSON features**.
+- **Icons**: MUI Icons integrated for intuitive UI and navigation.
+- **Responsive Layout**: Mobile-friendly design using MUI Grid system.
+- **Theming**: Supports light and dark themes with MUI ThemeProvider.
+- **Forms with Formik & Yup**: Easy-to-manage forms with validation.
+- **Mock Data**: Use **mock data** to populate charts, tables, and maps for testing and development.
 
-## React Compiler
+## Installation
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+1. Clone the repository:
 
-## Expanding the ESLint configuration
+```bash
+git clone https://github.com/abubakarcodeer/Dashboard.git
+cd Dashboard
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
