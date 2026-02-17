@@ -1,14 +1,15 @@
-import { Typography, useMediaQuery, useTheme } from "@mui/material";
+import { Typography, useMediaQuery,Box, useTheme } from "@mui/material";
 import { tokens } from "../../Theme";
 import { mockDataInvoices } from "../../data/mockData";
 import { Suspense, lazy } from "react";
+import Header from "../../components/Header";
 
 const ListComponent = lazy(() => import("../../components/ListComponent"));
 
 const Invoices = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
-  const isMobile = useMediaQuery("(max-width:559px)")
+  const isMobile = useMediaQuery("(max-width:559px)");
   const columns = [
     { field: "id", headerName: "ID" },
     {
@@ -43,14 +44,21 @@ const Invoices = () => {
       flex: 1,
     },
   ];
-  const mobileColumns = columns.filter(
-  (col) => ["id", "name", "email"].includes(col.field)
-);
+  const mobileColumns = columns.filter((col) =>
+    ["id", "name", "email"].includes(col.field),
+  );
 
   return (
-   <Suspense fallback={<div>Loading...</div>}>
- <ListComponent title={"INVOICE"} subtitle={"List of Invoice Balance"} rows={mockDataInvoices} columns={isMobile ? mobileColumns : columns} colors={colors} />
-   </Suspense>
+    <Box m="20px">
+      <Header title={"INVOICE"} subtitle={"List of Invoice Balance"} />
+      <Suspense fallback={<div>Loading...</div>}>
+        <ListComponent
+          rows={mockDataInvoices}
+          columns={isMobile ? mobileColumns : columns}
+          colors={colors}
+        />
+      </Suspense>
+    </Box>
   );
 };
 

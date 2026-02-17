@@ -5,6 +5,7 @@ import AdminPanelSettingsOutlinedIcon from "@mui/icons-material/AdminPanelSettin
 import LockOpenOutlinedIcon from "@mui/icons-material/LockOpenOutlined";
 import SecurityOutlinedIcon from "@mui/icons-material/SecurityOutlined";
 import { lazy, Suspense } from "react";
+import Header from "../../components/Header";
 
 const ListComponent = lazy(() => import("../../components/ListComponent"));
 
@@ -44,7 +45,7 @@ const Team = () => {
       renderCell: ({ row: { access } }) => {
         return (
           <Box
-            width={isMobile?"85%":"60%"}
+            width={isMobile ? "85%" : "60%"}
             m="10px auto"
             p="5px"
             display="flex"
@@ -74,15 +75,16 @@ const Team = () => {
   );
 
   return (
-    <Suspense fallback={<div>Loading...</div>}>
-      <ListComponent
-        title={"TEAM"}
-        subtitle={"Managing the Team Members"}
-        rows={mockDataTeam}
-        columns={isMobile ? mobileColumns : columns}
-        colors={colors}
-      />
-    </Suspense>
+    <Box m="20px">
+      <Header title={"TEAM"} subtitle={"Managing the Team Members"} />
+      <Suspense fallback={<div>Loading...</div>}>
+        <ListComponent
+          rows={mockDataTeam}
+          columns={isMobile ? mobileColumns : columns}
+          colors={colors}
+        />
+      </Suspense>
+    </Box>
   );
 };
 

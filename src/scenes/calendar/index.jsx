@@ -54,6 +54,7 @@ const Calendar = () => {
     <Box m="20px">
       <Header title="Calendar" subtitle="Full Calendar Interactive Page" />
 
+      <Suspense fallback={<div>Loading...</div>}>
       <Box display={isMobile?"inline":"flex"}  justifyContent="space-between">
         {/* CALENDAR SIDEBAR */}
         <Box
@@ -105,7 +106,6 @@ const Calendar = () => {
             },
           }}
         >
-          <Suspense fallback={<div>Loading...</div>}>
             <FullCalendar
             height="75vh"
             plugins={[
@@ -140,9 +140,9 @@ const Calendar = () => {
               },
             ]}
           />
-          </Suspense>
         </Box>
       </Box>
+          </Suspense>
     </Box>
   );
 };

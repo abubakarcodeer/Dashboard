@@ -1,6 +1,7 @@
 import { tokens } from "../../Theme";
+import Header from "../../components/Header";
 import { mockDataContacts } from "../../data/mockData";
-import { useMediaQuery, useTheme } from "@mui/material";
+import { Box, useMediaQuery, useTheme } from "@mui/material";
 import { lazy, Suspense } from "react";
 
 const ListComponent = lazy(() => import("../../components/ListComponent"));
@@ -57,17 +58,21 @@ const Contacts = () => {
   );
 
   return (
-    <Suspense fallback={<div>Loading...</div>}>
-      <ListComponent
+    <Box m="20px">
+      <Header
         title={"CONTACTS"}
         subtitle={"List of Contacts for Future Reference"}
-        rows={mockDataContacts}
-        columns={isMobile ? mobileColumns : columns}
-        colors={colors}
-        isShowToolBar={true}
-        isCheckedBox={false}
       />
-    </Suspense>
+      <Suspense fallback={<div>Loading...</div>}>
+        <ListComponent
+          rows={mockDataContacts}
+          columns={isMobile ? mobileColumns : columns}
+          colors={colors}
+          isShowToolBar={true}
+          isCheckedBox={false}
+        />
+      </Suspense>
+    </Box>
   );
 };
 
